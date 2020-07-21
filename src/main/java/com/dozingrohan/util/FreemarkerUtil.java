@@ -1,9 +1,9 @@
-package com.hundsun.dozingrohan.util;
+package com.dozingrohan.util;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.hundsun.dozingrohan.dto.Table;
+import com.dozingrohan.dto.Table;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;

@@ -1,4 +1,4 @@
-package com.hundsun.dozingrohan.support;
+package com.dozingrohan.support;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.InitializingBean;

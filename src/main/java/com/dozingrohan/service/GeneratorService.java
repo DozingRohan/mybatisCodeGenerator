@@ -1,12 +1,12 @@
-package com.hundsun.dozingrohan.service;
+package com.dozingrohan.service;
 
 import com.alibaba.fastjson.JSON;
-import com.hundsun.dozingrohan.dto.Column;
-import com.hundsun.dozingrohan.dto.GenParam;
-import com.hundsun.dozingrohan.dto.Table;
-import com.hundsun.dozingrohan.support.EnvironmentSupport;
-import com.hundsun.dozingrohan.util.FreemarkerUtil;
-import com.hundsun.dozingrohan.util.ZipUtil;
+import com.dozingrohan.dto.Column;
+import com.dozingrohan.dto.GenParam;
+import com.dozingrohan.dto.Table;
+import com.dozingrohan.support.EnvironmentSupport;
+import com.dozingrohan.util.FreemarkerUtil;
+import com.dozingrohan.util.ZipUtil;
 import oracle.jdbc.OracleConnection;
 import oracle.jdbc.OracleDriver;
 import org.apache.commons.lang3.StringUtils;

@@ -1,4 +1,4 @@
-package com.hundsun.dozingrohan.dto;
+package com.dozingrohan.dto;
 
 import java.io.Serializable;
 

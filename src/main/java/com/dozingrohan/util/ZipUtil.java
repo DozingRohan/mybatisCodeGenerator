@@ -1,6 +1,6 @@
-package com.hundsun.dozingrohan.util;
+package com.dozingrohan.util;
 
-import com.hundsun.dozingrohan.controller.GeneratorController;
+import com.dozingrohan.controller.GeneratorController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
