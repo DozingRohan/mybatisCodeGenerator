@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hundsun.ppos.ds.mybatis.po.AmopSysDatadictPo">
+	<resultMap id="BaseResultMap" type="com.hundsun.ppos.ds.mybatis.po.AmopSysDatadictPo">
+				<result column="L_DICT_ID" property="lDictId" />
+				<result column="VC_DICT_NAME" property="vcDictName" />
+				<result column="L_ITEM_ID" property="lItemId" />
+				<result column="VC_ITEM_NAME" property="vcItemName" />
+				<result column="VC_ITEM_NO" property="vcItemNo" />
+				<result column="C_LVL" property="cLvl" />
+				<result column="L_ORDER" property="lOrder" />
+	</resultMap>
+
+	<sql id="Table_Name">
+		AMOP_SYS_DATADICT
+	</sql>
+
+	<sql id="Base_Column">
+				L_DICT_ID
+				VC_DICT_NAME
+				L_ITEM_ID
+				VC_ITEM_NAME
+				VC_ITEM_NO
+				C_LVL
+	</sql>
+
+	<sql id="Base_Where">
+		<trim suffixOverrides="AND">
+
+			<if test="lDictId != null">
+				L_DICT_ID= #{lDictId}
+				   AND
+			</if>
+
+			<if test="greaterAndLDictId != null">
+				L_DICT_ID &gt;= #{greaterAndLDictId}
+				AND
+			</if>
+
+			<if test="lessAndLDictId != null">
+				L_DICT_ID &lt;= #{lessAndLDictId}
+				AND
+			</if>
+
+			<if test="greaterThanLDictId != null">
+				L_DICT_ID &gt; #{greaterThanLDictId}
+				AND
+			</if>
+
+			<if test="lessThanLDictId != null">
+				L_DICT_ID &lt; #{lessThanLDictId}
+				AND
+			</if>
+
+			<if test="vcDictName != null">
+				VC_DICT_NAME= #{vcDictName}
+				   AND
+			</if>
+
+			<if test="lItemId != null">
+				L_ITEM_ID= #{lItemId}
+				   AND
+			</if>
+
+			<if test="greaterAndLItemId != null">
+				L_ITEM_ID &gt;= #{greaterAndLItemId}
+				AND
+			</if>
+
+			<if test="lessAndLItemId != null">
+				L_ITEM_ID &lt;= #{lessAndLItemId}
+				AND
+			</if>
+
+			<if test="greaterThanLItemId != null">
+				L_ITEM_ID &gt; #{greaterThanLItemId}
+				AND
+			</if>
+
+			<if test="lessThanLItemId != null">
+				L_ITEM_ID &lt; #{lessThanLItemId}
+				AND
+			</if>
+
+			<if test="vcItemName != null">
+				VC_ITEM_NAME= #{vcItemName}
+				   AND
+			</if>
+
+			<if test="vcItemNo != null">
+				VC_ITEM_NO= #{vcItemNo}
+				   AND
+			</if>
+
+			<if test="cLvl != null">
+				C_LVL= #{cLvl}
+				   AND
+			</if>
+
+			<if test="lOrder != null">
+				L_ORDER= #{lOrder}
+			</if>
+
+			<if test="greaterAndLOrder != null">
+				L_ORDER &gt;= #{greaterAndLOrder}
+			</if>
+
+			<if test="lessAndLOrder != null">
+				L_ORDER &lt;= #{lessAndLOrder}
+			</if>
+
+			<if test="greaterThanLOrder != null">
+				L_ORDER &gt; #{greaterThanLOrder}
+			</if>
+
+			<if test="lessThanLOrder != null">
+				L_ORDER &lt; #{lessThanLOrder}
+			</if>
+
+
+		</trim>
+	</sql>
+	
+    <sql id="Base_Select">
+			select
+		<include refid="Base_Column" />
+		from
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</sql>
+
+
+
+	<insert id="insert" >
+		insert into
+		<include refid="Table_Name" />
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+	<if test="lDictId != null">
+		L_DICT_ID,
+	</if>
+	<if test="vcDictName != null">
+		VC_DICT_NAME,
+	</if>
+	<if test="lItemId != null">
+		L_ITEM_ID,
+	</if>
+	<if test="vcItemName != null">
+		VC_ITEM_NAME,
+	</if>
+	<if test="vcItemNo != null">
+		VC_ITEM_NO,
+	</if>
+	<if test="cLvl != null">
+		C_LVL,
+	</if>
+	<if test="lOrder != null">
+		L_ORDER,
+	</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+	<if test="lDictId != null">
+		#{lDictId},
+	</if>
+	<if test="vcDictName != null">
+		#{vcDictName},
+	</if>
+	<if test="lItemId != null">
+		#{lItemId},
+	</if>
+	<if test="vcItemName != null">
+		#{vcItemName},
+	</if>
+	<if test="vcItemNo != null">
+		#{vcItemNo},
+	</if>
+	<if test="cLvl != null">
+		#{cLvl},
+	</if>
+	<if test="lOrder != null">
+		#{lOrder},
+	</if>
+		</trim>
+	</insert>
+
+	<update id="update" >
+		update
+		<include refid="Table_Name" />
+		<set>
+	<if test="lDictId != null">
+		L_DICT_ID=#{lDictId},
+	</if>
+	<if test="vcDictName != null">
+		VC_DICT_NAME=#{vcDictName},
+	</if>
+	<if test="lItemId != null">
+		L_ITEM_ID=#{lItemId},
+	</if>
+	<if test="vcItemName != null">
+		VC_ITEM_NAME=#{vcItemName},
+	</if>
+	<if test="vcItemNo != null">
+		VC_ITEM_NO=#{vcItemNo},
+	</if>
+	<if test="cLvl != null">
+		C_LVL=#{cLvl},
+	</if>
+	<if test="lOrder != null">
+		L_ORDER=#{lOrder},
+	</if>
+		</set>
+		where 
+	</update>
+
+	<update id="updateByEntity" >
+		UPDATE
+		<include refid="Table_Name" />
+		<set>
+			<if test="s.lDictId != null">
+                    L_DICT_ID=#{s.lDictId},
+			</if>
+			<if test="s.vcDictName != null">
+                    VC_DICT_NAME=#{s.vcDictName},
+			</if>
+			<if test="s.lItemId != null">
+                    L_ITEM_ID=#{s.lItemId},
+			</if>
+			<if test="s.vcItemName != null">
+                    VC_ITEM_NAME=#{s.vcItemName},
+			</if>
+			<if test="s.vcItemNo != null">
+                    VC_ITEM_NO=#{s.vcItemNo},
+			</if>
+			<if test="s.cLvl != null">
+                    C_LVL=#{s.cLvl},
+			</if>
+			<if test="s.lOrder != null">
+                    L_ORDER=#{s.lOrder}
+			</if>
+		</set>
+		<where> 
+			<trim prefix="(" suffix=")" suffixOverrides="AND">
+			<if test="w.lDictId != null">
+                    L_DICT_ID=#{w.lDictId}
+                   AND 
+ 			</if>
+			<if test="w.vcDictName != null">
+                    VC_DICT_NAME=#{w.vcDictName}
+                   AND 
+ 			</if>
+			<if test="w.lItemId != null">
+                    L_ITEM_ID=#{w.lItemId}
+                   AND 
+ 			</if>
+			<if test="w.vcItemName != null">
+                    VC_ITEM_NAME=#{w.vcItemName}
+                   AND 
+ 			</if>
+			<if test="w.vcItemNo != null">
+                    VC_ITEM_NO=#{w.vcItemNo}
+                   AND 
+ 			</if>
+			<if test="w.cLvl != null">
+                    C_LVL=#{w.cLvl}
+                   AND 
+ 			</if>
+			<if test="w.lOrder != null">
+                    L_ORDER=#{w.lOrder}
+ 			</if>
+			</trim>
+		</where>
+	</update>
+
+	<delete id="delete" >
+		delete from
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</delete>
+
+	<select id="count" parameterType="java.util.Map" resultType="int">
+		select count(1) from
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</select>
+
+	<select id="selectOne"  resultMap="BaseResultMap">
+	  <include refid="Base_Select" />
+	</select>
+
+	<select id="selectList"  resultMap="BaseResultMap">
+	    <include refid="Base_Select" />
+	</select>
+
+     <select id="selectForUpdate" resultMap="BaseResultMap" useCache="false">
+		 <include refid="Base_Select" />
+		for update
+	</select>
+	
+
+</mapper>

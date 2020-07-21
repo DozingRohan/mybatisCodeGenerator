@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hundsun.ppos.ds.mybatis.po.AmopSysOrgUserPo">
+	<resultMap id="BaseResultMap" type="com.hundsun.ppos.ds.mybatis.po.AmopSysOrgUserPo">
+				<result column="USER_CODE" property="userCode" />
+				<result column="ORG_CODE" property="orgCode" />
+				<result column="ORG_FLAG" property="orgFlag" />
+	</resultMap>
+
+	<sql id="Table_Name">
+		AMOP_SYS_ORG_USER
+	</sql>
+
+	<sql id="Base_Column">
+				USER_CODE
+				ORG_CODE
+	</sql>
+
+	<sql id="Base_Where">
+		<trim suffixOverrides="AND">
+
+			<if test="userCode != null">
+				USER_CODE= #{userCode}
+				   AND
+			</if>
+
+			<if test="orgCode != null">
+				ORG_CODE= #{orgCode}
+				   AND
+			</if>
+
+			<if test="orgFlag != null">
+				ORG_FLAG= #{orgFlag}
+			</if>
+
+
+		</trim>
+	</sql>
+	
+    <sql id="Base_Select">
+			select
+		<include refid="Base_Column" />
+		from
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</sql>
+
+
+
+	<insert id="insert" >
+		insert into
+		<include refid="Table_Name" />
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+	<if test="userCode != null">
+		USER_CODE,
+	</if>
+	<if test="orgCode != null">
+		ORG_CODE,
+	</if>
+	<if test="orgFlag != null">
+		ORG_FLAG,
+	</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+	<if test="userCode != null">
+		#{userCode},
+	</if>
+	<if test="orgCode != null">
+		#{orgCode},
+	</if>
+	<if test="orgFlag != null">
+		#{orgFlag},
+	</if>
+		</trim>
+	</insert>
+
+	<update id="update" >
+		update
+		<include refid="Table_Name" />
+		<set>
+	<if test="userCode != null">
+		USER_CODE=#{userCode},
+	</if>
+	<if test="orgCode != null">
+		ORG_CODE=#{orgCode},
+	</if>
+	<if test="orgFlag != null">
+		ORG_FLAG=#{orgFlag},
+	</if>
+		</set>
+		where 
+	</update>
+
+	<update id="updateByEntity" >
+		UPDATE
+		<include refid="Table_Name" />
+		<set>
+			<if test="s.userCode != null">
+                    USER_CODE=#{s.userCode},
+			</if>
+			<if test="s.orgCode != null">
+                    ORG_CODE=#{s.orgCode},
+			</if>
+			<if test="s.orgFlag != null">
+                    ORG_FLAG=#{s.orgFlag}
+			</if>
+		</set>
+		<where> 
+			<trim prefix="(" suffix=")" suffixOverrides="AND">
+			<if test="w.userCode != null">
+                    USER_CODE=#{w.userCode}
+                   AND 
+ 			</if>
+			<if test="w.orgCode != null">
+                    ORG_CODE=#{w.orgCode}
+                   AND 
+ 			</if>
+			<if test="w.orgFlag != null">
+                    ORG_FLAG=#{w.orgFlag}
+ 			</if>
+			</trim>
+		</where>
+	</update>
+
+	<delete id="delete" >
+		delete from
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</delete>
+
+	<select id="count" parameterType="java.util.Map" resultType="int">
+		select count(1) from
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</select>
+
+	<select id="selectOne"  resultMap="BaseResultMap">
+	  <include refid="Base_Select" />
+	</select>
+
+	<select id="selectList"  resultMap="BaseResultMap">
+	    <include refid="Base_Select" />
+	</select>
+
+     <select id="selectForUpdate" resultMap="BaseResultMap" useCache="false">
+		 <include refid="Base_Select" />
+		for update
+	</select>
+	
+
+</mapper>

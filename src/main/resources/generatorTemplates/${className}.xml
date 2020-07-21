@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<#assign className = table.className>
+<mapper namespace="${basepackage}.${className}Po">
+	<#assign pkSqlName="id" />
+	<#assign right="{" />
+	<#assign left="}" />
+	<#assign pkColumnName="id" />
+	<resultMap id="BaseResultMap" type="${basepackage}.${className}Po">
+	<#list table.columns as column>
+	<#if column.pk>
+	<#assign pkSqlName="${column.sqlName}" />
+	<#assign pkColumnName="${column.columnNameLower}" />
+		<id column="${column.sqlName}" property="${column.columnNameLower}" />
+	<#else>
+		<result column="${column.sqlName}" property="${column.columnNameLower}" />
+	</#if>
+	</#list>
+	</resultMap>
+
+	<sql id="Table_Name">
+		${table.sqlName}
+	</sql>
+
+	<sql id="Base_Column">
+	<#list table.columns as column>
+	<#if column_has_next>
+		${column.sqlName},
+	<#else>
+		${column.sqlName}
+	</#if>
+	</#list>
+	</sql>
+
+	<sql id="Base_Where">
+		<trim suffixOverrides="AND">
+		<#list table.searchColumns as column>
+		<if test="${column.columnNameLower} != null">
+			${column.sqlName}= #${right}${column.columnNameLower}${left}
+			AND
+		</if>
+		</#list>
+		<!-- 比较字段开始 -->
+		<#list table.searchColumns as column>
+		<#if column.compare>
+		<if test="${column.columnGreaterAndName} != null">
+			${column.sqlName} &gt;= #${right}${column.columnGreaterAndName}${left}
+			AND
+		</if>
+		<if test="${column.columnLessAndName} != null">
+			${column.sqlName} &lt;= #${right}${column.columnLessAndName}${left}
+			AND
+		</if>
+		<if test="${column.columnGreaterThanName} != null">
+			${column.sqlName} &gt; #${right}${column.columnGreaterThanName}${left}
+			AND
+		</if>
+		<if test="${column.columnLessThanName} != null">
+			${column.sqlName} &lt; #${right}${column.columnLessThanName}${left}
+			AND
+		</if>
+		</#if>
+		</#list>
+		</trim>
+	</sql>
+	
+    <sql id="Base_Select">
+		select
+		<include refid="Base_Column" />
+		from
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</sql>
+
+	<insert id="insert" >
+		insert into
+		<include refid="Table_Name" />
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<@generateInsertColumn/>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<@generateInsertValue/>
+		</trim>
+	</insert>
+
+	<update id="update" >
+		update
+		<include refid="Table_Name" />
+		<set>
+			<@generateUpdate/>
+		</set>
+		where 
+		<#list table.columnspk as columnspk>
+		<#if columnspk_has_next>
+			${columnspk.sqlName}=#${right}${columnspk.columnNameLower}${left} AND
+		<#else >
+			${columnspk.sqlName}=#${right}${columnspk.columnNameLower}${left}
+	    </#if>
+		</#list>
+	</update>
+
+	<update id="updateByEntity" >
+		UPDATE
+		<include refid="Table_Name" />
+		<set>
+			<#list table.columns as column>
+			<#if !column.pk>
+			<if test="s.${column.columnNameLower} != null">
+			      <#if column_has_next>
+                    ${column.sqlName}=#${right}s.${column.columnNameLower}${left},
+                    <#else>
+                    ${column.sqlName}=#${right}s.${column.columnNameLower}${left}
+                   </#if>
+			</if>
+			</#if>
+			</#list>
+		</set>
+		<where> 
+			<trim prefix="(" suffix=")" suffixOverrides="AND">
+			<#list table.columns as column>
+			<if test="w.${column.columnNameLower} != null">
+                    ${column.sqlName}=#${right}w.${column.columnNameLower}${left}
+               <#if column_has_next>
+                   AND 
+               </#if>
+ 			</if>
+			</#list>
+			</trim>
+		</where>
+	</update>
+
+	<delete id="delete" >
+		delete from
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</delete>
+
+	<select id="count" parameterType="java.util.Map" resultType="int">
+		select count(1) from
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</select>
+
+	<select id="selectOne"  resultMap="BaseResultMap">
+	  <include refid="Base_Select" />
+	</select>
+
+	<select id="selectList"  resultMap="BaseResultMap">
+	    <include refid="Base_Select" />
+	</select>
+
+     <select id="selectForUpdate" resultMap="BaseResultMap" useCache="false">
+		 <include refid="Base_Select" />
+		for update
+	</select>
+	
+			<#macro generatePKWhere>
+			${pkSqlName} = #${right}${pkColumnName}${left}
+			</#macro>
+
+			<#macro generateUpdate>
+			<#list table.columns as column>
+			<if test="${column.columnNameLower} != null">
+				${column.sqlName}=#${right}${column.columnNameLower}${left},
+			</if>
+			</#list>
+			</#macro>
+
+			<#macro generateInsertColumn>
+			<#list table.columns as column>
+			<if test="${column.columnNameLower} != null">
+				${column.sqlName},
+			</if>
+			</#list>
+			</#macro>
+			<#macro generateInsertValue>
+			<#list table.columns as column>
+			<if test="${column.columnNameLower} != null">
+				#${right}${column.columnNameLower}${left},
+			</if>
+			</#list>
+			</#macro>
+
+</mapper>

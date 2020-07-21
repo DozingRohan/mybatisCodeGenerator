@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hundsun.ppos.ds.mybatis.po.AmopSysOrganizationPo">
+	<resultMap id="BaseResultMap" type="com.hundsun.ppos.ds.mybatis.po.AmopSysOrganizationPo">
+				<id column="ORG_ID" property="orgId" />
+				<result column="ORG_NAME" property="orgName" />
+				<result column="ORG_CODE" property="orgCode" />
+				<result column="PARENT_ID" property="parentId" />
+				<result column="ADDRESS" property="address" />
+				<result column="GMT_CREATED" property="gmtCreated" />
+				<result column="GMT_MODIFIED" property="gmtModified" />
+				<result column="CREATOR" property="creator" />
+				<result column="OPERATOR" property="operator" />
+				<result column="STATUS" property="status" />
+				<result column="ORG_LEVEL" property="orgLevel" />
+				<result column="ORG_ORDER" property="orgOrder" />
+				<result column="ORG_TYPE" property="orgType" />
+				<result column="ORG_PATH" property="orgPath" />
+				<result column="LEAVE_IS" property="leaveIs" />
+				<result column="ORG_CATE" property="orgCate" />
+				<result column="DIMENSION" property="dimension" />
+				<result column="BELONG_INST" property="belongInst" />
+				<result column="ORG_DESCRIBE" property="orgDescribe" />
+	</resultMap>
+
+	<sql id="Table_Name">
+		AMOP_SYS_ORGANIZATION
+	</sql>
+
+	<sql id="Base_Column">
+				ORG_ID
+				ORG_NAME
+				ORG_CODE
+				PARENT_ID
+				ADDRESS
+				GMT_CREATED
+				GMT_MODIFIED
+				CREATOR
+				OPERATOR
+				STATUS
+				ORG_LEVEL
+				ORG_ORDER
+				ORG_TYPE
+				ORG_PATH
+				LEAVE_IS
+				ORG_CATE
+				DIMENSION
+				BELONG_INST
+	</sql>
+
+	<sql id="Base_Where">
+		<trim suffixOverrides="AND">
+
+			<if test="orgId != null">
+				ORG_ID= #{orgId}
+				   AND
+			</if>
+
+			<if test="orgName != null">
+				ORG_NAME= #{orgName}
+				   AND
+			</if>
+
+			<if test="orgCode != null">
+				ORG_CODE= #{orgCode}
+				   AND
+			</if>
+
+			<if test="parentId != null">
+				PARENT_ID= #{parentId}
+				   AND
+			</if>
+
+			<if test="address != null">
+				ADDRESS= #{address}
+				   AND
+			</if>
+
+			<if test="gmtCreated != null">
+				GMT_CREATED= #{gmtCreated}
+				   AND
+			</if>
+
+			<if test="greaterAndGmtCreated != null">
+				GMT_CREATED &gt;= #{greaterAndGmtCreated}
+				AND
+			</if>
+
+			<if test="lessAndGmtCreated != null">
+				GMT_CREATED &lt;= #{lessAndGmtCreated}
+				AND
+			</if>
+
+			<if test="greaterThanGmtCreated != null">
+				GMT_CREATED &gt; #{greaterThanGmtCreated}
+				AND
+			</if>
+
+			<if test="lessThanGmtCreated != null">
+				GMT_CREATED &lt; #{lessThanGmtCreated}
+				AND
+			</if>
+
+			<if test="gmtModified != null">
+				GMT_MODIFIED= #{gmtModified}
+				   AND
+			</if>
+
+			<if test="greaterAndGmtModified != null">
+				GMT_MODIFIED &gt;= #{greaterAndGmtModified}
+				AND
+			</if>
+
+			<if test="lessAndGmtModified != null">
+				GMT_MODIFIED &lt;= #{lessAndGmtModified}
+				AND
+			</if>
+
+			<if test="greaterThanGmtModified != null">
+				GMT_MODIFIED &gt; #{greaterThanGmtModified}
+				AND
+			</if>
+
+			<if test="lessThanGmtModified != null">
+				GMT_MODIFIED &lt; #{lessThanGmtModified}
+				AND
+			</if>
+
+			<if test="creator != null">
+				CREATOR= #{creator}
+				   AND
+			</if>
+
+			<if test="operator != null">
+				OPERATOR= #{operator}
+				   AND
+			</if>
+
+			<if test="status != null">
+				STATUS= #{status}
+				   AND
+			</if>
+
+			<if test="greaterAndStatus != null">
+				STATUS &gt;= #{greaterAndStatus}
+				AND
+			</if>
+
+			<if test="lessAndStatus != null">
+				STATUS &lt;= #{lessAndStatus}
+				AND
+			</if>
+
+			<if test="greaterThanStatus != null">
+				STATUS &gt; #{greaterThanStatus}
+				AND
+			</if>
+
+			<if test="lessThanStatus != null">
+				STATUS &lt; #{lessThanStatus}
+				AND
+			</if>
+
+			<if test="orgLevel != null">
+				ORG_LEVEL= #{orgLevel}
+				   AND
+			</if>
+
+			<if test="orgOrder != null">
+				ORG_ORDER= #{orgOrder}
+				   AND
+			</if>
+
+			<if test="greaterAndOrgOrder != null">
+				ORG_ORDER &gt;= #{greaterAndOrgOrder}
+				AND
+			</if>
+
+			<if test="lessAndOrgOrder != null">
+				ORG_ORDER &lt;= #{lessAndOrgOrder}
+				AND
+			</if>
+
+			<if test="greaterThanOrgOrder != null">
+				ORG_ORDER &gt; #{greaterThanOrgOrder}
+				AND
+			</if>
+
+			<if test="lessThanOrgOrder != null">
+				ORG_ORDER &lt; #{lessThanOrgOrder}
+				AND
+			</if>
+
+			<if test="orgType != null">
+				ORG_TYPE= #{orgType}
+				   AND
+			</if>
+
+			<if test="orgPath != null">
+				ORG_PATH= #{orgPath}
+				   AND
+			</if>
+
+			<if test="leaveIs != null">
+				LEAVE_IS= #{leaveIs}
+				   AND
+			</if>
+
+			<if test="greaterAndLeaveIs != null">
+				LEAVE_IS &gt;= #{greaterAndLeaveIs}
+				AND
+			</if>
+
+			<if test="lessAndLeaveIs != null">
+				LEAVE_IS &lt;= #{lessAndLeaveIs}
+				AND
+			</if>
+
+			<if test="greaterThanLeaveIs != null">
+				LEAVE_IS &gt; #{greaterThanLeaveIs}
+				AND
+			</if>
+
+			<if test="lessThanLeaveIs != null">
+				LEAVE_IS &lt; #{lessThanLeaveIs}
+				AND
+			</if>
+
+			<if test="orgCate != null">
+				ORG_CATE= #{orgCate}
+				   AND
+			</if>
+
+			<if test="dimension != null">
+				DIMENSION= #{dimension}
+				   AND
+			</if>
+
+			<if test="belongInst != null">
+				BELONG_INST= #{belongInst}
+				   AND
+			</if>
+
+			<if test="orgDescribe != null">
+				ORG_DESCRIBE= #{orgDescribe}
+			</if>
+
+
+		</trim>
+	</sql>
+	
+    <sql id="Base_Select">
+			select
+		<include refid="Base_Column" />
+		from
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</sql>
+
+
+
+	<insert id="insert" >
+		insert into
+		<include refid="Table_Name" />
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+	<if test="orgId != null">
+		ORG_ID,
+	</if>
+	<if test="orgName != null">
+		ORG_NAME,
+	</if>
+	<if test="orgCode != null">
+		ORG_CODE,
+	</if>
+	<if test="parentId != null">
+		PARENT_ID,
+	</if>
+	<if test="address != null">
+		ADDRESS,
+	</if>
+	<if test="gmtCreated != null">
+		GMT_CREATED,
+	</if>
+	<if test="gmtModified != null">
+		GMT_MODIFIED,
+	</if>
+	<if test="creator != null">
+		CREATOR,
+	</if>
+	<if test="operator != null">
+		OPERATOR,
+	</if>
+	<if test="status != null">
+		STATUS,
+	</if>
+	<if test="orgLevel != null">
+		ORG_LEVEL,
+	</if>
+	<if test="orgOrder != null">
+		ORG_ORDER,
+	</if>
+	<if test="orgType != null">
+		ORG_TYPE,
+	</if>
+	<if test="orgPath != null">
+		ORG_PATH,
+	</if>
+	<if test="leaveIs != null">
+		LEAVE_IS,
+	</if>
+	<if test="orgCate != null">
+		ORG_CATE,
+	</if>
+	<if test="dimension != null">
+		DIMENSION,
+	</if>
+	<if test="belongInst != null">
+		BELONG_INST,
+	</if>
+	<if test="orgDescribe != null">
+		ORG_DESCRIBE,
+	</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+	<if test="orgId != null">
+		#{orgId},
+	</if>
+	<if test="orgName != null">
+		#{orgName},
+	</if>
+	<if test="orgCode != null">
+		#{orgCode},
+	</if>
+	<if test="parentId != null">
+		#{parentId},
+	</if>
+	<if test="address != null">
+		#{address},
+	</if>
+	<if test="gmtCreated != null">
+		#{gmtCreated},
+	</if>
+	<if test="gmtModified != null">
+		#{gmtModified},
+	</if>
+	<if test="creator != null">
+		#{creator},
+	</if>
+	<if test="operator != null">
+		#{operator},
+	</if>
+	<if test="status != null">
+		#{status},
+	</if>
+	<if test="orgLevel != null">
+		#{orgLevel},
+	</if>
+	<if test="orgOrder != null">
+		#{orgOrder},
+	</if>
+	<if test="orgType != null">
+		#{orgType},
+	</if>
+	<if test="orgPath != null">
+		#{orgPath},
+	</if>
+	<if test="leaveIs != null">
+		#{leaveIs},
+	</if>
+	<if test="orgCate != null">
+		#{orgCate},
+	</if>
+	<if test="dimension != null">
+		#{dimension},
+	</if>
+	<if test="belongInst != null">
+		#{belongInst},
+	</if>
+	<if test="orgDescribe != null">
+		#{orgDescribe},
+	</if>
+		</trim>
+	</insert>
+
+	<update id="update" >
+		update
+		<include refid="Table_Name" />
+		<set>
+	<if test="orgId != null">
+		ORG_ID=#{orgId},
+	</if>
+	<if test="orgName != null">
+		ORG_NAME=#{orgName},
+	</if>
+	<if test="orgCode != null">
+		ORG_CODE=#{orgCode},
+	</if>
+	<if test="parentId != null">
+		PARENT_ID=#{parentId},
+	</if>
+	<if test="address != null">
+		ADDRESS=#{address},
+	</if>
+	<if test="gmtCreated != null">
+		GMT_CREATED=#{gmtCreated},
+	</if>
+	<if test="gmtModified != null">
+		GMT_MODIFIED=#{gmtModified},
+	</if>
+	<if test="creator != null">
+		CREATOR=#{creator},
+	</if>
+	<if test="operator != null">
+		OPERATOR=#{operator},
+	</if>
+	<if test="status != null">
+		STATUS=#{status},
+	</if>
+	<if test="orgLevel != null">
+		ORG_LEVEL=#{orgLevel},
+	</if>
+	<if test="orgOrder != null">
+		ORG_ORDER=#{orgOrder},
+	</if>
+	<if test="orgType != null">
+		ORG_TYPE=#{orgType},
+	</if>
+	<if test="orgPath != null">
+		ORG_PATH=#{orgPath},
+	</if>
+	<if test="leaveIs != null">
+		LEAVE_IS=#{leaveIs},
+	</if>
+	<if test="orgCate != null">
+		ORG_CATE=#{orgCate},
+	</if>
+	<if test="dimension != null">
+		DIMENSION=#{dimension},
+	</if>
+	<if test="belongInst != null">
+		BELONG_INST=#{belongInst},
+	</if>
+	<if test="orgDescribe != null">
+		ORG_DESCRIBE=#{orgDescribe},
+	</if>
+		</set>
+		where 
+					ORG_ID=#{orgId}
+	</update>
+
+	<update id="updateByEntity" >
+		UPDATE
+		<include refid="Table_Name" />
+		<set>
+			<if test="s.orgName != null">
+                    ORG_NAME=#{s.orgName},
+			</if>
+			<if test="s.orgCode != null">
+                    ORG_CODE=#{s.orgCode},
+			</if>
+			<if test="s.parentId != null">
+                    PARENT_ID=#{s.parentId},
+			</if>
+			<if test="s.address != null">
+                    ADDRESS=#{s.address},
+			</if>
+			<if test="s.gmtCreated != null">
+                    GMT_CREATED=#{s.gmtCreated},
+			</if>
+			<if test="s.gmtModified != null">
+                    GMT_MODIFIED=#{s.gmtModified},
+			</if>
+			<if test="s.creator != null">
+                    CREATOR=#{s.creator},
+			</if>
+			<if test="s.operator != null">
+                    OPERATOR=#{s.operator},
+			</if>
+			<if test="s.status != null">
+                    STATUS=#{s.status},
+			</if>
+			<if test="s.orgLevel != null">
+                    ORG_LEVEL=#{s.orgLevel},
+			</if>
+			<if test="s.orgOrder != null">
+                    ORG_ORDER=#{s.orgOrder},
+			</if>
+			<if test="s.orgType != null">
+                    ORG_TYPE=#{s.orgType},
+			</if>
+			<if test="s.orgPath != null">
+                    ORG_PATH=#{s.orgPath},
+			</if>
+			<if test="s.leaveIs != null">
+                    LEAVE_IS=#{s.leaveIs},
+			</if>
+			<if test="s.orgCate != null">
+                    ORG_CATE=#{s.orgCate},
+			</if>
+			<if test="s.dimension != null">
+                    DIMENSION=#{s.dimension},
+			</if>
+			<if test="s.belongInst != null">
+                    BELONG_INST=#{s.belongInst},
+			</if>
+			<if test="s.orgDescribe != null">
+                    ORG_DESCRIBE=#{s.orgDescribe}
+			</if>
+		</set>
+		<where> 
+			<trim prefix="(" suffix=")" suffixOverrides="AND">
+			<if test="w.orgId != null">
+                    ORG_ID=#{w.orgId}
+                   AND 
+ 			</if>
+			<if test="w.orgName != null">
+                    ORG_NAME=#{w.orgName}
+                   AND 
+ 			</if>
+			<if test="w.orgCode != null">
+                    ORG_CODE=#{w.orgCode}
+                   AND 
+ 			</if>
+			<if test="w.parentId != null">
+                    PARENT_ID=#{w.parentId}
+                   AND 
+ 			</if>
+			<if test="w.address != null">
+                    ADDRESS=#{w.address}
+                   AND 
+ 			</if>
+			<if test="w.gmtCreated != null">
+                    GMT_CREATED=#{w.gmtCreated}
+                   AND 
+ 			</if>
+			<if test="w.gmtModified != null">
+                    GMT_MODIFIED=#{w.gmtModified}
+                   AND 
+ 			</if>
+			<if test="w.creator != null">
+                    CREATOR=#{w.creator}
+                   AND 
+ 			</if>
+			<if test="w.operator != null">
+                    OPERATOR=#{w.operator}
+                   AND 
+ 			</if>
+			<if test="w.status != null">
+                    STATUS=#{w.status}
+                   AND 
+ 			</if>
+			<if test="w.orgLevel != null">
+                    ORG_LEVEL=#{w.orgLevel}
+                   AND 
+ 			</if>
+			<if test="w.orgOrder != null">
+                    ORG_ORDER=#{w.orgOrder}
+                   AND 
+ 			</if>
+			<if test="w.orgType != null">
+                    ORG_TYPE=#{w.orgType}
+                   AND 
+ 			</if>
+			<if test="w.orgPath != null">
+                    ORG_PATH=#{w.orgPath}
+                   AND 
+ 			</if>
+			<if test="w.leaveIs != null">
+                    LEAVE_IS=#{w.leaveIs}
+                   AND 
+ 			</if>
+			<if test="w.orgCate != null">
+                    ORG_CATE=#{w.orgCate}
+                   AND 
+ 			</if>
+			<if test="w.dimension != null">
+                    DIMENSION=#{w.dimension}
+                   AND 
+ 			</if>
+			<if test="w.belongInst != null">
+                    BELONG_INST=#{w.belongInst}
+                   AND 
+ 			</if>
+			<if test="w.orgDescribe != null">
+                    ORG_DESCRIBE=#{w.orgDescribe}
+ 			</if>
+			</trim>
+		</where>
+	</update>
+
+	<delete id="delete" >
+		delete from
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</delete>
+
+	<select id="count" parameterType="java.util.Map" resultType="int">
+		select count(1) from
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</select>
+
+	<select id="selectOne"  resultMap="BaseResultMap">
+	  <include refid="Base_Select" />
+	</select>
+
+	<select id="selectList"  resultMap="BaseResultMap">
+	    <include refid="Base_Select" />
+	</select>
+
+     <select id="selectForUpdate" resultMap="BaseResultMap" useCache="false">
+		 <include refid="Base_Select" />
+		for update
+	</select>
+	
+
+</mapper>

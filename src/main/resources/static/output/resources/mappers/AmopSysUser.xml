@@ -1,0 +1,725 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hundsun.ppos.ds.mybatis.po.AmopSysUserPo">
+	<resultMap id="BaseResultMap" type="com.hundsun.ppos.ds.mybatis.po.AmopSysUserPo">
+		<id column="USER_CODE" property="userCode" />
+		<result column="USER_NAME" property="userName" />
+		<result column="MOBILE" property="mobile" />
+		<result column="PHONE" property="phone" />
+		<result column="EMAIL" property="email" />
+		<result column="ADDRESS" property="address" />
+		<result column="USER_STATUS" property="userStatus" />
+		<result column="USER_TYPE" property="userType" />
+		<result column="LAST_LOGIN_TIME" property="lastLoginTime" />
+		<result column="CANCEL_DATE" property="cancelDate" />
+		<result column="GMT_CREATED" property="gmtCreated" />
+		<result column="GMT_MODIFIED" property="gmtModified" />
+		<result column="CREATOR" property="creator" />
+		<result column="OPERATOR" property="operator" />
+		<result column="STATUS" property="status" />
+		<result column="LOCK_STATUS" property="lockStatus" />
+		<result column="USER_PWD" property="userPwd" />
+		<result column="CARD_TYPE" property="cardType" />
+		<result column="CARD_NO" property="cardNo" />
+		<result column="REMARK" property="remark" />
+		<result column="LOCK_OPERATOR" property="lockOperator" />
+		<result column="LOGOUT_OPERATOR" property="logoutOperator" />
+		<result column="LOCK_LAST_DATE" property="lockLastDate" />
+		<result column="LOGOUT_LAST_DATE" property="logoutLastDate" />
+	</resultMap>
+
+	<sql id="Table_Name">
+		AMOP_SYS_USER
+	</sql>
+
+	<sql id="Base_Column">
+		USER_CODE,
+		USER_NAME,
+		MOBILE,
+		PHONE,
+		EMAIL,
+		ADDRESS,
+		USER_STATUS,
+		USER_TYPE,
+		LAST_LOGIN_TIME,
+		CANCEL_DATE,
+		GMT_CREATED,
+		GMT_MODIFIED,
+		CREATOR,
+		OPERATOR,
+		STATUS,
+		LOCK_STATUS,
+		USER_PWD,
+		CARD_TYPE,
+		CARD_NO,
+		REMARK,
+		LOCK_OPERATOR,
+		LOGOUT_OPERATOR,
+		LOCK_LAST_DATE,
+		LOGOUT_LAST_DATE
+	</sql>
+
+	<sql id="Base_Where">
+		<trim suffixOverrides="AND">
+		<if test="userCode != null">
+			USER_CODE= #{userCode}
+			AND
+		</if>
+		<if test="userName != null">
+			USER_NAME= #{userName}
+			AND
+		</if>
+		<if test="mobile != null">
+			MOBILE= #{mobile}
+			AND
+		</if>
+		<if test="phone != null">
+			PHONE= #{phone}
+			AND
+		</if>
+		<if test="email != null">
+			EMAIL= #{email}
+			AND
+		</if>
+		<if test="address != null">
+			ADDRESS= #{address}
+			AND
+		</if>
+		<if test="userStatus != null">
+			USER_STATUS= #{userStatus}
+			AND
+		</if>
+		<if test="userType != null">
+			USER_TYPE= #{userType}
+			AND
+		</if>
+		<if test="lastLoginTime != null">
+			LAST_LOGIN_TIME= #{lastLoginTime}
+			AND
+		</if>
+		<if test="cancelDate != null">
+			CANCEL_DATE= #{cancelDate}
+			AND
+		</if>
+		<if test="gmtCreated != null">
+			GMT_CREATED= #{gmtCreated}
+			AND
+		</if>
+		<if test="gmtModified != null">
+			GMT_MODIFIED= #{gmtModified}
+			AND
+		</if>
+		<if test="creator != null">
+			CREATOR= #{creator}
+			AND
+		</if>
+		<if test="operator != null">
+			OPERATOR= #{operator}
+			AND
+		</if>
+		<if test="status != null">
+			STATUS= #{status}
+			AND
+		</if>
+		<if test="lockStatus != null">
+			LOCK_STATUS= #{lockStatus}
+			AND
+		</if>
+		<if test="userPwd != null">
+			USER_PWD= #{userPwd}
+			AND
+		</if>
+		<if test="cardType != null">
+			CARD_TYPE= #{cardType}
+			AND
+		</if>
+		<if test="cardNo != null">
+			CARD_NO= #{cardNo}
+			AND
+		</if>
+		<if test="remark != null">
+			REMARK= #{remark}
+			AND
+		</if>
+		<if test="lockOperator != null">
+			LOCK_OPERATOR= #{lockOperator}
+			AND
+		</if>
+		<if test="logoutOperator != null">
+			LOGOUT_OPERATOR= #{logoutOperator}
+			AND
+		</if>
+		<if test="lockLastDate != null">
+			LOCK_LAST_DATE= #{lockLastDate}
+			AND
+		</if>
+		<if test="logoutLastDate != null">
+			LOGOUT_LAST_DATE= #{logoutLastDate}
+			AND
+		</if>
+		<!-- 比较字段开始 -->
+		<if test="greaterAndLastLoginTime != null">
+			LAST_LOGIN_TIME &gt;= #{greaterAndLastLoginTime}
+			AND
+		</if>
+		<if test="lessAndLastLoginTime != null">
+			LAST_LOGIN_TIME &lt;= #{lessAndLastLoginTime}
+			AND
+		</if>
+		<if test="greaterThanLastLoginTime != null">
+			LAST_LOGIN_TIME &gt; #{greaterThanLastLoginTime}
+			AND
+		</if>
+		<if test="lessThanLastLoginTime != null">
+			LAST_LOGIN_TIME &lt; #{lessThanLastLoginTime}
+			AND
+		</if>
+		<if test="greaterAndCancelDate != null">
+			CANCEL_DATE &gt;= #{greaterAndCancelDate}
+			AND
+		</if>
+		<if test="lessAndCancelDate != null">
+			CANCEL_DATE &lt;= #{lessAndCancelDate}
+			AND
+		</if>
+		<if test="greaterThanCancelDate != null">
+			CANCEL_DATE &gt; #{greaterThanCancelDate}
+			AND
+		</if>
+		<if test="lessThanCancelDate != null">
+			CANCEL_DATE &lt; #{lessThanCancelDate}
+			AND
+		</if>
+		<if test="greaterAndGmtCreated != null">
+			GMT_CREATED &gt;= #{greaterAndGmtCreated}
+			AND
+		</if>
+		<if test="lessAndGmtCreated != null">
+			GMT_CREATED &lt;= #{lessAndGmtCreated}
+			AND
+		</if>
+		<if test="greaterThanGmtCreated != null">
+			GMT_CREATED &gt; #{greaterThanGmtCreated}
+			AND
+		</if>
+		<if test="lessThanGmtCreated != null">
+			GMT_CREATED &lt; #{lessThanGmtCreated}
+			AND
+		</if>
+		<if test="greaterAndGmtModified != null">
+			GMT_MODIFIED &gt;= #{greaterAndGmtModified}
+			AND
+		</if>
+		<if test="lessAndGmtModified != null">
+			GMT_MODIFIED &lt;= #{lessAndGmtModified}
+			AND
+		</if>
+		<if test="greaterThanGmtModified != null">
+			GMT_MODIFIED &gt; #{greaterThanGmtModified}
+			AND
+		</if>
+		<if test="lessThanGmtModified != null">
+			GMT_MODIFIED &lt; #{lessThanGmtModified}
+			AND
+		</if>
+		<if test="greaterAndStatus != null">
+			STATUS &gt;= #{greaterAndStatus}
+			AND
+		</if>
+		<if test="lessAndStatus != null">
+			STATUS &lt;= #{lessAndStatus}
+			AND
+		</if>
+		<if test="greaterThanStatus != null">
+			STATUS &gt; #{greaterThanStatus}
+			AND
+		</if>
+		<if test="lessThanStatus != null">
+			STATUS &lt; #{lessThanStatus}
+			AND
+		</if>
+		<if test="greaterAndLockLastDate != null">
+			LOCK_LAST_DATE &gt;= #{greaterAndLockLastDate}
+			AND
+		</if>
+		<if test="lessAndLockLastDate != null">
+			LOCK_LAST_DATE &lt;= #{lessAndLockLastDate}
+			AND
+		</if>
+		<if test="greaterThanLockLastDate != null">
+			LOCK_LAST_DATE &gt; #{greaterThanLockLastDate}
+			AND
+		</if>
+		<if test="lessThanLockLastDate != null">
+			LOCK_LAST_DATE &lt; #{lessThanLockLastDate}
+			AND
+		</if>
+		<if test="greaterAndLogoutLastDate != null">
+			LOGOUT_LAST_DATE &gt;= #{greaterAndLogoutLastDate}
+			AND
+		</if>
+		<if test="lessAndLogoutLastDate != null">
+			LOGOUT_LAST_DATE &lt;= #{lessAndLogoutLastDate}
+			AND
+		</if>
+		<if test="greaterThanLogoutLastDate != null">
+			LOGOUT_LAST_DATE &gt; #{greaterThanLogoutLastDate}
+			AND
+		</if>
+		<if test="lessThanLogoutLastDate != null">
+			LOGOUT_LAST_DATE &lt; #{lessThanLogoutLastDate}
+			AND
+		</if>
+		</trim>
+	</sql>
+	
+    <sql id="Base_Select">
+		select
+		<include refid="Base_Column" />
+		from
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</sql>
+
+	<insert id="insert" >
+		insert into
+		<include refid="Table_Name" />
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userCode != null">
+				USER_CODE,
+			</if>
+			<if test="userName != null">
+				USER_NAME,
+			</if>
+			<if test="mobile != null">
+				MOBILE,
+			</if>
+			<if test="phone != null">
+				PHONE,
+			</if>
+			<if test="email != null">
+				EMAIL,
+			</if>
+			<if test="address != null">
+				ADDRESS,
+			</if>
+			<if test="userStatus != null">
+				USER_STATUS,
+			</if>
+			<if test="userType != null">
+				USER_TYPE,
+			</if>
+			<if test="lastLoginTime != null">
+				LAST_LOGIN_TIME,
+			</if>
+			<if test="cancelDate != null">
+				CANCEL_DATE,
+			</if>
+			<if test="gmtCreated != null">
+				GMT_CREATED,
+			</if>
+			<if test="gmtModified != null">
+				GMT_MODIFIED,
+			</if>
+			<if test="creator != null">
+				CREATOR,
+			</if>
+			<if test="operator != null">
+				OPERATOR,
+			</if>
+			<if test="status != null">
+				STATUS,
+			</if>
+			<if test="lockStatus != null">
+				LOCK_STATUS,
+			</if>
+			<if test="userPwd != null">
+				USER_PWD,
+			</if>
+			<if test="cardType != null">
+				CARD_TYPE,
+			</if>
+			<if test="cardNo != null">
+				CARD_NO,
+			</if>
+			<if test="remark != null">
+				REMARK,
+			</if>
+			<if test="lockOperator != null">
+				LOCK_OPERATOR,
+			</if>
+			<if test="logoutOperator != null">
+				LOGOUT_OPERATOR,
+			</if>
+			<if test="lockLastDate != null">
+				LOCK_LAST_DATE,
+			</if>
+			<if test="logoutLastDate != null">
+				LOGOUT_LAST_DATE,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="userCode != null">
+				#{userCode},
+			</if>
+			<if test="userName != null">
+				#{userName},
+			</if>
+			<if test="mobile != null">
+				#{mobile},
+			</if>
+			<if test="phone != null">
+				#{phone},
+			</if>
+			<if test="email != null">
+				#{email},
+			</if>
+			<if test="address != null">
+				#{address},
+			</if>
+			<if test="userStatus != null">
+				#{userStatus},
+			</if>
+			<if test="userType != null">
+				#{userType},
+			</if>
+			<if test="lastLoginTime != null">
+				#{lastLoginTime},
+			</if>
+			<if test="cancelDate != null">
+				#{cancelDate},
+			</if>
+			<if test="gmtCreated != null">
+				#{gmtCreated},
+			</if>
+			<if test="gmtModified != null">
+				#{gmtModified},
+			</if>
+			<if test="creator != null">
+				#{creator},
+			</if>
+			<if test="operator != null">
+				#{operator},
+			</if>
+			<if test="status != null">
+				#{status},
+			</if>
+			<if test="lockStatus != null">
+				#{lockStatus},
+			</if>
+			<if test="userPwd != null">
+				#{userPwd},
+			</if>
+			<if test="cardType != null">
+				#{cardType},
+			</if>
+			<if test="cardNo != null">
+				#{cardNo},
+			</if>
+			<if test="remark != null">
+				#{remark},
+			</if>
+			<if test="lockOperator != null">
+				#{lockOperator},
+			</if>
+			<if test="logoutOperator != null">
+				#{logoutOperator},
+			</if>
+			<if test="lockLastDate != null">
+				#{lockLastDate},
+			</if>
+			<if test="logoutLastDate != null">
+				#{logoutLastDate},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="update" >
+		update
+		<include refid="Table_Name" />
+		<set>
+			<if test="userCode != null">
+				USER_CODE=#{userCode},
+			</if>
+			<if test="userName != null">
+				USER_NAME=#{userName},
+			</if>
+			<if test="mobile != null">
+				MOBILE=#{mobile},
+			</if>
+			<if test="phone != null">
+				PHONE=#{phone},
+			</if>
+			<if test="email != null">
+				EMAIL=#{email},
+			</if>
+			<if test="address != null">
+				ADDRESS=#{address},
+			</if>
+			<if test="userStatus != null">
+				USER_STATUS=#{userStatus},
+			</if>
+			<if test="userType != null">
+				USER_TYPE=#{userType},
+			</if>
+			<if test="lastLoginTime != null">
+				LAST_LOGIN_TIME=#{lastLoginTime},
+			</if>
+			<if test="cancelDate != null">
+				CANCEL_DATE=#{cancelDate},
+			</if>
+			<if test="gmtCreated != null">
+				GMT_CREATED=#{gmtCreated},
+			</if>
+			<if test="gmtModified != null">
+				GMT_MODIFIED=#{gmtModified},
+			</if>
+			<if test="creator != null">
+				CREATOR=#{creator},
+			</if>
+			<if test="operator != null">
+				OPERATOR=#{operator},
+			</if>
+			<if test="status != null">
+				STATUS=#{status},
+			</if>
+			<if test="lockStatus != null">
+				LOCK_STATUS=#{lockStatus},
+			</if>
+			<if test="userPwd != null">
+				USER_PWD=#{userPwd},
+			</if>
+			<if test="cardType != null">
+				CARD_TYPE=#{cardType},
+			</if>
+			<if test="cardNo != null">
+				CARD_NO=#{cardNo},
+			</if>
+			<if test="remark != null">
+				REMARK=#{remark},
+			</if>
+			<if test="lockOperator != null">
+				LOCK_OPERATOR=#{lockOperator},
+			</if>
+			<if test="logoutOperator != null">
+				LOGOUT_OPERATOR=#{logoutOperator},
+			</if>
+			<if test="lockLastDate != null">
+				LOCK_LAST_DATE=#{lockLastDate},
+			</if>
+			<if test="logoutLastDate != null">
+				LOGOUT_LAST_DATE=#{logoutLastDate},
+			</if>
+		</set>
+		where 
+			USER_CODE=#{userCode}
+	</update>
+
+	<update id="updateByEntity" >
+		UPDATE
+		<include refid="Table_Name" />
+		<set>
+			<if test="s.userName != null">
+                    USER_NAME=#{s.userName},
+			</if>
+			<if test="s.mobile != null">
+                    MOBILE=#{s.mobile},
+			</if>
+			<if test="s.phone != null">
+                    PHONE=#{s.phone},
+			</if>
+			<if test="s.email != null">
+                    EMAIL=#{s.email},
+			</if>
+			<if test="s.address != null">
+                    ADDRESS=#{s.address},
+			</if>
+			<if test="s.userStatus != null">
+                    USER_STATUS=#{s.userStatus},
+			</if>
+			<if test="s.userType != null">
+                    USER_TYPE=#{s.userType},
+			</if>
+			<if test="s.lastLoginTime != null">
+                    LAST_LOGIN_TIME=#{s.lastLoginTime},
+			</if>
+			<if test="s.cancelDate != null">
+                    CANCEL_DATE=#{s.cancelDate},
+			</if>
+			<if test="s.gmtCreated != null">
+                    GMT_CREATED=#{s.gmtCreated},
+			</if>
+			<if test="s.gmtModified != null">
+                    GMT_MODIFIED=#{s.gmtModified},
+			</if>
+			<if test="s.creator != null">
+                    CREATOR=#{s.creator},
+			</if>
+			<if test="s.operator != null">
+                    OPERATOR=#{s.operator},
+			</if>
+			<if test="s.status != null">
+                    STATUS=#{s.status},
+			</if>
+			<if test="s.lockStatus != null">
+                    LOCK_STATUS=#{s.lockStatus},
+			</if>
+			<if test="s.userPwd != null">
+                    USER_PWD=#{s.userPwd},
+			</if>
+			<if test="s.cardType != null">
+                    CARD_TYPE=#{s.cardType},
+			</if>
+			<if test="s.cardNo != null">
+                    CARD_NO=#{s.cardNo},
+			</if>
+			<if test="s.remark != null">
+                    REMARK=#{s.remark},
+			</if>
+			<if test="s.lockOperator != null">
+                    LOCK_OPERATOR=#{s.lockOperator},
+			</if>
+			<if test="s.logoutOperator != null">
+                    LOGOUT_OPERATOR=#{s.logoutOperator},
+			</if>
+			<if test="s.lockLastDate != null">
+                    LOCK_LAST_DATE=#{s.lockLastDate},
+			</if>
+			<if test="s.logoutLastDate != null">
+                    LOGOUT_LAST_DATE=#{s.logoutLastDate}
+			</if>
+		</set>
+		<where> 
+			<trim prefix="(" suffix=")" suffixOverrides="AND">
+			<if test="w.userCode != null">
+                    USER_CODE=#{w.userCode}
+                   AND 
+ 			</if>
+			<if test="w.userName != null">
+                    USER_NAME=#{w.userName}
+                   AND 
+ 			</if>
+			<if test="w.mobile != null">
+                    MOBILE=#{w.mobile}
+                   AND 
+ 			</if>
+			<if test="w.phone != null">
+                    PHONE=#{w.phone}
+                   AND 
+ 			</if>
+			<if test="w.email != null">
+                    EMAIL=#{w.email}
+                   AND 
+ 			</if>
+			<if test="w.address != null">
+                    ADDRESS=#{w.address}
+                   AND 
+ 			</if>
+			<if test="w.userStatus != null">
+                    USER_STATUS=#{w.userStatus}
+                   AND 
+ 			</if>
+			<if test="w.userType != null">
+                    USER_TYPE=#{w.userType}
+                   AND 
+ 			</if>
+			<if test="w.lastLoginTime != null">
+                    LAST_LOGIN_TIME=#{w.lastLoginTime}
+                   AND 
+ 			</if>
+			<if test="w.cancelDate != null">
+                    CANCEL_DATE=#{w.cancelDate}
+                   AND 
+ 			</if>
+			<if test="w.gmtCreated != null">
+                    GMT_CREATED=#{w.gmtCreated}
+                   AND 
+ 			</if>
+			<if test="w.gmtModified != null">
+                    GMT_MODIFIED=#{w.gmtModified}
+                   AND 
+ 			</if>
+			<if test="w.creator != null">
+                    CREATOR=#{w.creator}
+                   AND 
+ 			</if>
+			<if test="w.operator != null">
+                    OPERATOR=#{w.operator}
+                   AND 
+ 			</if>
+			<if test="w.status != null">
+                    STATUS=#{w.status}
+                   AND 
+ 			</if>
+			<if test="w.lockStatus != null">
+                    LOCK_STATUS=#{w.lockStatus}
+                   AND 
+ 			</if>
+			<if test="w.userPwd != null">
+                    USER_PWD=#{w.userPwd}
+                   AND 
+ 			</if>
+			<if test="w.cardType != null">
+                    CARD_TYPE=#{w.cardType}
+                   AND 
+ 			</if>
+			<if test="w.cardNo != null">
+                    CARD_NO=#{w.cardNo}
+                   AND 
+ 			</if>
+			<if test="w.remark != null">
+                    REMARK=#{w.remark}
+                   AND 
+ 			</if>
+			<if test="w.lockOperator != null">
+                    LOCK_OPERATOR=#{w.lockOperator}
+                   AND 
+ 			</if>
+			<if test="w.logoutOperator != null">
+                    LOGOUT_OPERATOR=#{w.logoutOperator}
+                   AND 
+ 			</if>
+			<if test="w.lockLastDate != null">
+                    LOCK_LAST_DATE=#{w.lockLastDate}
+                   AND 
+ 			</if>
+			<if test="w.logoutLastDate != null">
+                    LOGOUT_LAST_DATE=#{w.logoutLastDate}
+ 			</if>
+			</trim>
+		</where>
+	</update>
+
+	<delete id="delete" >
+		delete from
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</delete>
+
+	<select id="count" parameterType="java.util.Map" resultType="int">
+		select count(1) from
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</select>
+
+	<select id="selectOne"  resultMap="BaseResultMap">
+	  <include refid="Base_Select" />
+	</select>
+
+	<select id="selectList"  resultMap="BaseResultMap">
+	    <include refid="Base_Select" />
+	</select>
+
+     <select id="selectForUpdate" resultMap="BaseResultMap" useCache="false">
+		 <include refid="Base_Select" />
+		for update
+	</select>
+	
+
+</mapper>

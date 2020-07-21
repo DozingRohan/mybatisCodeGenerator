@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hundsun.ppos.AmopSysUserRolePo">
+	<resultMap id="BaseResultMap" type="com.hundsun.ppos.AmopSysUserRolePo">
+		<result column="ROLE_CODE" property="roleCode" />
+		<result column="USER_CODE" property="userCode" />
+		<result column="RIGHT_FLAG" property="rightFlag" />
+	</resultMap>
+
+	<sql id="Table_Name">
+		AMOP_SYS_USER_ROLE
+	</sql>
+
+	<sql id="Base_Column">
+		ROLE_CODE,
+		USER_CODE,
+		RIGHT_FLAG
+	</sql>
+
+	<sql id="Base_Where">
+		<trim suffixOverrides="AND">
+		<if test="roleCode != null">
+			ROLE_CODE= #{roleCode}
+	           AND 
+		</if>
+		<if test="userCode != null">
+			USER_CODE= #{userCode}
+	           AND 
+		</if>
+		<if test="rightFlag != null">
+			RIGHT_FLAG= #{rightFlag}
+		</if>
+		</trim>
+	</sql>
+	
+    <sql id="Base_Select">
+			select
+		<include refid="Base_Column" />
+		from
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</sql>
+
+
+
+	<insert id="insert" >
+		insert into
+		<include refid="Table_Name" />
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+	<if test="roleCode != null">
+		ROLE_CODE,
+	</if>
+	<if test="userCode != null">
+		USER_CODE,
+	</if>
+	<if test="rightFlag != null">
+		RIGHT_FLAG,
+	</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+	<if test="roleCode != null">
+		#{roleCode},
+	</if>
+	<if test="userCode != null">
+		#{userCode},
+	</if>
+	<if test="rightFlag != null">
+		#{rightFlag},
+	</if>
+		</trim>
+	</insert>
+
+	<update id="update" >
+		update
+		<include refid="Table_Name" />
+		<set>
+	<if test="roleCode != null">
+		ROLE_CODE=#{roleCode},
+	</if>
+	<if test="userCode != null">
+		USER_CODE=#{userCode},
+	</if>
+	<if test="rightFlag != null">
+		RIGHT_FLAG=#{rightFlag},
+	</if>
+		</set>
+		where 
+	</update>
+
+	<update id="updateByEntity" >
+		UPDATE
+		<include refid="Table_Name" />
+		<set>
+			<if test="s.roleCode != null">
+                    ROLE_CODE=#{s.roleCode},
+			</if>
+			<if test="s.userCode != null">
+                    USER_CODE=#{s.userCode},
+			</if>
+			<if test="s.rightFlag != null">
+                    RIGHT_FLAG=#{s.rightFlag}
+			</if>
+		</set>
+		<where> 
+			<trim prefix="(" suffix=")" suffixOverrides="AND">
+			<if test="w.roleCode != null">
+                    ROLE_CODE=#{w.roleCode}
+                   AND 
+ 			</if>
+			<if test="w.userCode != null">
+                    USER_CODE=#{w.userCode}
+                   AND 
+ 			</if>
+			<if test="w.rightFlag != null">
+                    RIGHT_FLAG=#{w.rightFlag}
+ 			</if>
+			</trim>
+		</where>
+	</update>
+
+	<delete id="delete" >
+		delete from
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</delete>
+
+	<select id="count" parameterType="java.util.Map" resultType="int">
+		select count(1) from
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</select>
+
+	<select id="selectOne"  resultMap="BaseResultMap">
+	  <include refid="Base_Select" />
+	</select>
+
+	<select id="selectList"  resultMap="BaseResultMap">
+	    <include refid="Base_Select" />
+	</select>
+
+     <select id="selectForUpdate" resultMap="BaseResultMap" useCache="false">
+		 <include refid="Base_Select" />
+		for update
+	</select>
+	
+
+</mapper>
