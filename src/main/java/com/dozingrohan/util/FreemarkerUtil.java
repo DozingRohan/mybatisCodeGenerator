@@ -141,17 +141,15 @@ public class FreemarkerUtil implements EnvironmentAware {
 
     @Override
     public void setEnvironment(Environment environment) {
-        XML_TDIR = environment.getProperty("mapperfiledir");
-        JAVA_TDIR = environment.getProperty("javafiledir");
-        LOGGER.info("xmlpath ---> [{}]",XML_TDIR);
-        LOGGER.info("javapath ---> [{}]",JAVA_TDIR);
-        File xmlDir = new File(XML_TDIR);
-        File javaDir = new File(JAVA_TDIR);
-        if(!xmlDir.exists()){
-            xmlDir.mkdir();
-        }
-        if(!javaDir.exists()){
-            javaDir.mkdir();
+        XML_TDIR = environment.getClass().getResource("/").getPath() + environment.getProperty("mapperfiledir");
+        JAVA_TDIR = environment.getClass().getResource("/").getPath() + environment.getProperty("javafiledir");
+        LOGGER.info("@@@@@@@@@@@[{}]",XML_TDIR);
+        LOGGER.info("@@@@@@@@@@@[{}]",JAVA_TDIR);
+        File ff = new File(XML_TDIR);
+        File fff = new File(JAVA_TDIR);
+        if(!ff.exists() || !ff.isDirectory() || !fff.exists() || !fff.isDirectory()){
+            ff.mkdirs();
+            fff.mkdirs();
         }
     }
 }
